@@ -3,7 +3,7 @@
 Esta é a minha versão do projeto desenvolvimento durante a 7ª Semana JS Expert.
 
 ## Preview
-<img width=100% src="./initial-template/assets/demo-template-lg.gif">
+<img width=100% src="./assets/demo-template-lg.gif">
 
 ## Pré-requisitos
 - Este projeto foi criado usando Node.js v19.6
