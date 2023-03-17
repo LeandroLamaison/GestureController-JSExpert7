@@ -1,27 +1,21 @@
 import Controller from "./controller.js"
 import View from "./view.js"
 import Camera from "../../../lib/camera.js"
-import { doesSupportWorkerType } from "../../../lib/util.js"
+import { buildWorkerMock, doesSupportWorkerType } from "../../../lib/util.js"
+import buildWorker from "./worker/builder.js"
 
-function getWorker(src) {
+async function getWorker(src) {
   if (doesSupportWorkerType()) {
-    const worker = new Worker(src, { type: "module" })
-    console.log(worker)
-    return worker
+    return new Worker(src, { type: "module" })
   }
 
-  console.log('Using mock')
-  const workerMock = {
-    onmessage: () => { },
-    postMessage: () => { }
-  }
-  return workerMock
+  return buildWorkerMock(buildWorker)
 }
 
 
 const factory = {
   async initialize() {
-    const worker = getWorker('./src/worker.js')
+    const worker = await getWorker('./src/worker/worker.js')
     const camera = await Camera.init()
 
     return Controller.initialize({
