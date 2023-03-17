@@ -20,3 +20,6 @@ Esta é a minha versão do projeto desenvolvimento durante a 7ª Semana JS Exper
 
 ### Layout
 - Interface baseada no projeto [Streaming Service](https://codepen.io/Gunnarhawk/pen/vYJEwoM) de [gunnarhawk](https://github.com/Gunnarhawk)
+
+### Algorítmo de Detecção de Piscadas
+https://github.com/monaca-samples/blink-to-text
