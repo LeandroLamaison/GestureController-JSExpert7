@@ -5,9 +5,12 @@ import { doesSupportWorkerType } from "../../../lib/util.js"
 
 function getWorker(src) {
   if (doesSupportWorkerType()) {
-    return new Worker(src, { type: "module" })
+    const worker = new Worker(src, { type: "module" })
+    console.log(worker)
+    return worker
   }
 
+  console.log('Using mock')
   const workerMock = {
     onmessage: () => { },
     postMessage: () => { }
@@ -18,7 +21,7 @@ function getWorker(src) {
 
 const factory = {
   async initialize() {
-    const worker = await getWorker('./src/worker.js')
+    const worker = getWorker('./src/worker.js')
     const camera = await Camera.init()
 
     return Controller.initialize({
