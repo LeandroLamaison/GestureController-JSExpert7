@@ -33,16 +33,20 @@ export default class Service {
       const upperLeft = prediction.annotations.leftEyeLower0;
       const leftEAR = this.#getEAR(upperLeft, lowerLeft);
 
-      // True if the eye is closed
-      const hasBlinked = leftEAR <= this.EAR_THRESHOLD && rightEAR <= this.EAR_THRESHOLD;
-      if(!hasBlinked || !shouldRun()) {
+      const isLeftEyeClosed = leftEAR <= this.EAR_THRESHOLD;
+      const isRightEyeClosed = rightEAR <= this.EAR_THRESHOLD;
+
+      const hasBlinkedLeft = isLeftEyeClosed && !isRightEyeClosed;
+      const hasBlinkedRight = isRightEyeClosed && !isLeftEyeClosed;
+
+      if((!hasBlinkedLeft && !hasBlinkedRight) || !shouldRun()) {
         continue
       }
 
-      return true
+      return { left: hasBlinkedLeft, right: hasBlinkedRight }
     }
 
-    return false
+    return { left: false, right: false }
   }
 
   // Calculate the position of eyelid to predict a blink

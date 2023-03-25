@@ -20,7 +20,7 @@ export default class Controller {
   }
 
   onBtnStart() {
-    this.log('Initializing detection...')
+    this.log('Left blink to resume video. Right blink to pause video.')
     this.printVideoOnLoop()
   }
 
@@ -38,15 +38,19 @@ export default class Controller {
     let ready = false
     worker.onmessage = ({ data }) => {
       if(data === 'READY') {
-        console.log('Worker is ready')
         this.#view.enableButton()
         ready = true
         return
       }
 
-      const hasBlinked = data.hasBlinked
-      if(hasBlinked) {
-        this.#view.toggleVideo()
+      const hasBlinkedLeft = data.hasBlinkedLeft
+      if(hasBlinkedLeft) {
+        this.#view.resumeVideo()
+      }
+
+      const hasBlinkedRight = data.hasBlinkedRight
+      if(hasBlinkedRight) {
+        this.#view.pauseVideo()
       }
     }
 

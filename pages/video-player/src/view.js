@@ -28,12 +28,11 @@ export default class View {
     return this.#canvasContext.getImageData(0, 0, videoWidth, videoHeight)
   }
 
-  toggleVideo() {
-    if(this.#videoElement.paused) {
-      this.#videoElement.play()
-      return
-    }
+  resumeVideo() {
+    this.#videoElement.play()
+  }
 
+  pauseVideo() {
     this.#videoElement.pause()
   }
 }

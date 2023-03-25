@@ -18,12 +18,15 @@ export default async function buildWorker (ctx) {
 
   ctx.onmessage = async function onmessage ({ data: video }) {
     const hasBlinked = await service.hasBlinked(video)
-    if (!hasBlinked) {
+
+    if (hasBlinked.left) {
+      ctx.postMessage({ hasBlinkedLeft: true })
       return
     }
-    
-    console.log('Blinked', hasBlinked)
-    ctx.postMessage({ hasBlinked })
+
+    if(hasBlinked.right) {
+      ctx.postMessage({ hasBlinkedRight: true })
+    }
   } 
 }
 
