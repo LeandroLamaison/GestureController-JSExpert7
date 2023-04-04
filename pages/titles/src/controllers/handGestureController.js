@@ -1,4 +1,8 @@
+
+import { gestureStrings } from '../utils/gestures.js'
+
 const PIXELS_PER_SCROLL = 100
+
 
 export default class HandGestureController {
   #camera
@@ -16,6 +20,13 @@ export default class HandGestureController {
   async #scrollPage(direction) {
     const currentScrollY = this.#scrollPositionY
     const lastDirection = this.#lastDirection
+
+    if(direction === 'scroll-top') {
+      this.#lastDirection = null
+      this.#scrollPositionY = 0
+      this.#view.scrollPage(this.#scrollPositionY)
+      return
+    }
 
     if (
       (lastDirection === 'scroll-down' && !this.#view.hasScrolledDown(currentScrollY)) ||
@@ -42,6 +53,8 @@ export default class HandGestureController {
     try {
       const hands = await this.#service.estimateHands(this.#camera.video)
       for await (const { gesture, indexFingertipX, indexFingertipY } of this.#service.detectGestures(hands)) {
+        console.log(gestureStrings[gesture])
+        
         if (gesture.includes('scroll-')) {
           this.#scrollPage(gesture)
         }
