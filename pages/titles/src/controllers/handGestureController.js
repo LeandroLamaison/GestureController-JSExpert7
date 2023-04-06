@@ -1,7 +1,13 @@
 
 import { gestureStrings } from '../utils/gestures.js'
+import { prepareRunChecker } from '../../../../lib/util.js'
 
 const PIXELS_PER_SCROLL = 100
+const CLICK_COOLDOWN_MILLIS = 500
+
+const { shouldRun: shouldRunClick } = prepareRunChecker({ 
+  timeDelay: CLICK_COOLDOWN_MILLIS 
+})
 
 export default class HandGestureController {
   #camera
@@ -59,6 +65,11 @@ export default class HandGestureController {
 
       for await (const { gesture, indexFingertipX, indexFingertipY } of this.#service.detectGestures(hands)) {
         console.log(gestureStrings[gesture])
+
+        if(gesture === 'click' && shouldRunClick()) {
+          this.#view.clickOnElement(indexFingertipX, indexFingertipY)
+          return
+        }
         
         if (gesture.includes('scroll-')) {
           this.#scrollPage(gesture)

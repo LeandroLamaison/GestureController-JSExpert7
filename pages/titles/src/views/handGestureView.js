@@ -9,6 +9,24 @@ export default class HandGestureView {
     this.#handsCanvas.height = globalThis.screen.availHeight
   }
 
+  clickOnElement(x, y) {
+    const element = document.elementFromPoint(x, y)
+    if(!element) {
+      return
+    }
+
+    const rect = element.getBoundingClientRect()
+    const event = new MouseEvent('click', {
+      view: window,
+      bubbles: true,
+      cancelable: true,
+      clientX: rect.left + x,
+      clientY: rect.top + y 
+    })
+
+    element.dispatchEvent(event)
+  }
+
   clearCanvas() {
     this.#canvasContext.clearRect(0, 0, this.#handsCanvas.width, this.#handsCanvas.height)
   }
