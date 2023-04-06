@@ -33,3 +33,7 @@ https://github.com/monaca-samples/blink-to-text
 ### Detecção de Gestos
 
 https://github.com/andypotato/rock-paper-scissors
+
+### Espelhamento das Mãos
+
+https://github.com/liady/solar-hands

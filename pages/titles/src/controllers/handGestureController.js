@@ -3,7 +3,6 @@ import { gestureStrings } from '../utils/gestures.js'
 
 const PIXELS_PER_SCROLL = 100
 
-
 export default class HandGestureController {
   #camera
   #view
@@ -52,6 +51,12 @@ export default class HandGestureController {
   async #estimateHands () {
     try {
       const hands = await this.#service.estimateHands(this.#camera.video)
+
+      this.#view.clearCanvas()
+      if(hands?.length) {
+        this.#view.drawResults(hands)
+      }
+
       for await (const { gesture, indexFingertipX, indexFingertipY } of this.#service.detectGestures(hands)) {
         console.log(gestureStrings[gesture])
         
