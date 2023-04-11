@@ -19,11 +19,13 @@ const factory = {
   async initialize() {
     return HandGestureController.initialize({
       camera: await Camera.init(),
-      view: new HandGestureView(),
+      view: new HandGestureView({
+        styler: new PseudoStyler()
+      }),
       service: new HandGestureService({
         fingerPoseDetection,
         handPoseDetection,
-        handPoseVersion
+        handPoseVersion,
       }),
     })
   }
