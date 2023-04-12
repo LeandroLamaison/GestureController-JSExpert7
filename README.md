@@ -9,7 +9,6 @@ Esta é a minha versão do projeto desenvolvimento durante a 7ª Semana JS Exper
 ## Pré-requisitos
 
 - Este projeto foi criado usando Node.js v19.6
-- O ideal é que você use o projeto em ambiente Unix (Linux). Se você estiver no Windows, é recomendado que use o [Windows Subsystem Linux](https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10) pois nas aulas são mostrados comandos Linux que possam não existir no Windows.
 
 ## Running
 
