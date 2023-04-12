@@ -103,7 +103,7 @@ export default class HandGestureView {
 
     const callback = () => this.#styler.toggleStyle(element, ':hover')
     callback()
-    setTimeout(callback, 200)
+    setTimeout(callback, 500)
   }
 
   loop (fn) {

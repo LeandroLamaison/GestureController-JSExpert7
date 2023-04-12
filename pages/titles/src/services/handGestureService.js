@@ -30,7 +30,7 @@ export default class HandGestureService {
       })
 
       const indexFingertip = hand.keypoints.find(keypoint => {
-        return keypoint.name === 'index_finger_pip'
+        return keypoint.name === 'index_finger_tip'
       })
 
       yield { 

@@ -1,5 +1,4 @@
 
-import { gestureStrings } from '../utils/gestures.js'
 import { prepareRunChecker } from '../../../../lib/util.js'
 
 const PIXELS_PER_SCROLL = 100
@@ -64,8 +63,6 @@ export default class HandGestureController {
       }
 
       for await (const { gesture, indexFingertipX, indexFingertipY } of this.#service.detectGestures(hands)) {
-        console.log(gestureStrings[gesture])
-
         if(gesture === 'click' && shouldRunClick()) {
           this.#view.clickOnElement(indexFingertipX, indexFingertipY)
           return
