@@ -1,3 +1,5 @@
-import factory from "./factory.js";
+import blinkFactory from "./blinkFactory.js";
+import handGestureFactory from '../../../lib/handGesture/handGestureFactory.js'
 
-factory.initialize()
+await blinkFactory.initialize()
+await handGestureFactory.initialize()

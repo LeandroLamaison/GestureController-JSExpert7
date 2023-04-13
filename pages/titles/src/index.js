@@ -1,5 +1,5 @@
-import cardsFactory from "./factories/cardsFactory.js"
-import handGestureFactory from "./factories/handGestureFactory.js"
+import cardsFactory from "./cardsFactory.js"
+import handGestureFactory from "../../../lib/handGesture/handGestureFactory.js"
 
 await cardsFactory.initialize()
 await handGestureFactory.initialize()

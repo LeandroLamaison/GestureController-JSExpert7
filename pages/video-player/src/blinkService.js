@@ -3,7 +3,7 @@ import { prepareRunChecker } from "../../../lib/util.js"
 const BLINK_DELAY = 2000
 const { shouldRun } = prepareRunChecker({ timeDelay: BLINK_DELAY })
 
-export default class Service {
+export default class BlinkService {
   EAR_THRESHOLD = 0.27
   #model = null
   #faceLandmarksDetection = undefined

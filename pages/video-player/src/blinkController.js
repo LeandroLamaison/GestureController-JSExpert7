@@ -1,4 +1,4 @@
-export default class Controller {
+export default class BlinkController {
   #view
   #worker
   #camera
@@ -11,7 +11,7 @@ export default class Controller {
   }
 
   static initialize({ view, worker, camera }) {
-    const controller = new Controller({ view, worker, camera })
+    const controller = new BlinkController({ view, worker, camera })
     controller.log('Not yet detecting eye blink! Click in the button to start.')
   }
   

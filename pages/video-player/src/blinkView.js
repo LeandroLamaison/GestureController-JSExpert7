@@ -1,4 +1,4 @@
-export default class View {
+export default class BlinkView {
   #btnInit = document.querySelector('#init')
   #statusElement = document.querySelector('#status')
   #videoFrameCanvas = document.createElement('canvas')

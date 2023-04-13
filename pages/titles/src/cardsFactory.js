@@ -1,15 +1,15 @@
-import CardsController from "./../controllers/cardsController.js"
-import CardsView from "./../views/cardsView.js"
-import CardsService from "./../services/cardsService.js"
-import { getValidWorker } from "../../../../lib/util.js"
-import buildCardListWorker from "../workers/cardListWorker/builder.js"
+import CardsController from "./cardsController.js"
+import CardsView from "./cardsView.js"
+import CardsService from "./cardsService.js"
+import { getValidWorker } from "../../../lib/util.js"
+import buildCardListWorker from "./cardListWorker/builder.js"
 
 const [rootPath] = window.location.href.split('/pages/')
 
 const factory = {
   async initialize() {
     const cardListWorker = await getValidWorker(
-      './src/workers/cardListWorker.js', 
+      './src/cardListWorker/cardListWorker.js', 
       buildCardListWorker
     )
     
