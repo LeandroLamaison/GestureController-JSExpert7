@@ -1,3 +1,4 @@
+import { findFingerTip } from '../utils/fingers.js'
 import { knownGestures } from '../utils/gestures.js'
 
 const DETECTION_TRUST_PERCENTAGE = 9
@@ -29,9 +30,7 @@ export default class HandGestureService {
         return previous.score > current.score ? previous : current
       })
 
-      const indexFingertip = hand.keypoints.find(keypoint => {
-        return keypoint.name === 'index_finger_tip'
-      })
+      const indexFingertip = findFingerTip(hand.keypoints)
 
       yield { 
         gesture: clearerGesture.name, 

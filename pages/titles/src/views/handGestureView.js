@@ -1,4 +1,4 @@
-import { fingerLookupIndexes } from "../utils/fingers.js"
+import { findFingerTip, fingerId, fingerLookupIndexes } from "../utils/fingers.js"
 
 export default class HandGestureView {
   #handsCanvas = document.querySelector('#hands')
@@ -91,11 +91,11 @@ export default class HandGestureView {
   }
 
   #hoverElement (finger, points) {
-    if (finger !== 'indexFinger') {
+    if (finger !== fingerId.index) {
       return
     }
 
-    const tip = points.find(item => item.name === 'index_finger_tip')
+    const tip = findFingerTip(points)
     const element = document.elementFromPoint(tip.x, tip.y)
     if(!element) {
       return
