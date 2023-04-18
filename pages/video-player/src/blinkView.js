@@ -35,4 +35,8 @@ export default class BlinkView {
   pauseVideo () {
     this.#videoElement.pause();
   }
+
+  setVideoSrc (src) {
+    this.#videoElement.src = src;
+  }
 }
